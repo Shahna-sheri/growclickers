@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" fill="none">
+  <rect width="1200" height="630" fill="#050505"/>
+  <rect x="0" y="0" width="1200" height="8" fill="#F5B700"/>
+  <circle cx="1000" cy="200" r="300" fill="#F5B700" fill-opacity="0.08"/>
+  <circle cx="200" cy="500" r="250" fill="#F5B700" fill-opacity="0.04"/>
+  
+  <!-- Logo -->
+  <image href="/logo.png" x="100" y="100" width="64" height="64" />
+  <text x="180" y="143" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="36" fill="#FFFFFF">Grow<tspan fill="#F5B700">Clickers</tspan></text>
+  
+  <!-- Headline -->
+  <text x="100" y="270" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="64" fill="#FFFFFF">We Build Businesses</text>
+  <text x="100" y="350" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="64" fill="#F5B700">That Grow Beyond</text>
+  <text x="100" y="430" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="64" fill="#FFFFFF">Marketing.</text>
+  
+  <!-- Subtext -->
+  <text x="100" y="500" font-family="system-ui, -apple-system, sans-serif" font-weight="500" font-size="24" fill="#9CA3AF">Business Growth Strategy • Meta Ads • Google Ads • Academy</text>
+  
+  <!-- Tag -->
+  <rect x="100" y="535" width="280" height="40" rx="8" fill="#181818" stroke="#2A2A2A"/>
+  <text x="240" y="561" font-family="system-ui, -apple-system, sans-serif" font-weight="600" font-size="16" fill="#F5B700" text-anchor="middle">www.growclickers.com</text>
+</svg>
+

@@ -1,0 +1,16 @@
+{
+  "name": "GrowClickers",
+  "short_name": "GrowClickers",
+  "description": "Business Growth, Branding & Performance Marketing",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#050505",
+  "theme_color": "#F5B700",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
