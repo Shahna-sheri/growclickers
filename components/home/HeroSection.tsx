@@ -119,7 +119,13 @@ export default function HeroSection() {
               <div className="w-3 h-3 rounded-full bg-red-500/70" />
               <div className="w-3 h-3 rounded-full bg-yellow-500/70" />
               <div className="w-3 h-3 rounded-full bg-green-500/70" />
-              <span className="text-gray-600 text-xs ml-2">Growth Dashboard — Live</span>
+              <div className="flex items-center gap-2 ml-2">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+                </span>
+                <span className="text-gray-400 text-xs font-mono">Growth Dashboard — Live</span>
+              </div>
             </div>
             <div className="grid grid-cols-3 gap-4 mb-5">
               {[
@@ -133,19 +139,61 @@ export default function HeroSection() {
                 </div>
               ))}
             </div>
-            <div className="space-y-2">
-              {[70, 55, 85, 40].map((w, i) => (
-                <div key={i} className="flex items-center gap-3">
-                  <div className="text-gray-600 text-xs w-16">
-                    {["Brand", "Reach", "Leads", "ROAS"][i]}
+            <div className="space-y-3">
+              {[
+                { label: "Brand", value: 70 },
+                { label: "Reach", value: 55 },
+                { label: "Leads", value: 85 },
+                { label: "ROAS", value: 40 },
+              ].map((item, i) => (
+                <div key={item.label} className="flex items-center gap-3">
+                  <div className="text-gray-400 font-mono text-xs w-16">
+                    {item.label}
                   </div>
-                  <div className="flex-1 bg-[#1A1A1A] rounded-full h-2">
-                    <div
-                      className="bg-gradient-to-r from-[#F5B700] to-[#FFD84D] h-2 rounded-full"
-                      style={{ width: `${w}%` }}
-                    />
+                  <div className="flex-1 bg-[#1A1A1A] rounded-full h-2.5 overflow-hidden p-0.5 border border-[#252525]">
+                    <motion.div
+                      initial={{ width: "0%" }}
+                      animate={{
+                        width: [
+                          "0%",
+                          `${item.value}%`,
+                          `${Math.min(item.value + 4, 100)}%`,
+                          `${Math.max(item.value - 3, 0)}%`,
+                          `${item.value}%`,
+                        ],
+                      }}
+                      transition={{
+                        duration: 3.2,
+                        delay: 0.5 + i * 0.15,
+                        times: [0, 0.45, 0.65, 0.85, 1],
+                        repeat: Infinity,
+                        repeatDelay: 2.5,
+                        ease: "easeInOut",
+                      }}
+                      className="relative bg-gradient-to-r from-[#F5B700] via-[#FFCA28] to-[#FFD84D] h-full rounded-full shadow-[0_0_12px_rgba(245,183,0,0.45)]"
+                    >
+                      {/* Live light shimmer passing through */}
+                      <motion.div
+                        animate={{ x: ["-100%", "250%"] }}
+                        transition={{
+                          repeat: Infinity,
+                          duration: 2.2,
+                          delay: 1.6 + i * 0.25,
+                          ease: "easeInOut",
+                          repeatDelay: 1.2,
+                        }}
+                        className="absolute inset-0 w-1/2 bg-gradient-to-r from-transparent via-white/50 to-transparent pointer-events-none"
+                      />
+                    </motion.div>
                   </div>
-                  <div className="text-gray-400 text-xs w-8">{w}%</div>
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.8 + i * 0.15 }}
+                    className="text-[#F5B700] font-mono font-semibold text-xs w-10 text-right"
+                  >
+                    {item.value}%
+                  </motion.div>
                 </div>
               ))}
             </div>
