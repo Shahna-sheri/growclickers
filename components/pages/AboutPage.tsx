@@ -63,63 +63,59 @@ export default function AboutPage() {
               <div className="absolute -top-3 -left-3 w-28 h-28 border-t-2 border-l-2 border-[#F5B700]" />
               <div className="absolute -bottom-3 -right-3 w-28 h-28 border-b-2 border-r-2 border-[#F5B700]" />
 
-              <div className="bg-[#121212] border border-[#2B2B2B] rounded-2xl p-8 text-center aspect-[4/5] flex flex-col items-center justify-center relative overflow-hidden shadow-2xl">
-                {/* Background glow */}
-                <div className="absolute top-0 right-0 w-36 h-36 bg-[#F5B700]/10 rounded-full blur-2xl" />
+              {/* Full portrait photo */}
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl aspect-[4/5] group">
+                <Image
+                  src="/images/shafi-pulakkad.jpg"
+                  alt="Shafi Pulakkad - Founder & Growth Strategist"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 448px"
+                  className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                  priority
+                />
+                {/* Gradient overlay at bottom */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent pointer-events-none" />
 
-                <div className="relative w-32 h-32 rounded-full overflow-hidden border-2 border-[#F5B700] mb-6 shadow-xl shadow-[#F5B700]/25">
-                  <Image
-                    src="/images/shafi-pulakkad.jpg"
-                    alt="Shafi Pulakkad - Founder & Growth Strategist"
-                    fill
-                    sizes="128px"
-                    className="object-cover object-top"
-                    priority
-                  />
-                </div>
-
-                <h3 className="text-2xl font-bold text-white mb-1">Shafi Pulakkad</h3>
-                <p className="text-[#F5B700] text-xs font-mono uppercase tracking-widest mb-3">
-                  Founder & Growth Strategist
-                </p>
-                <p className="text-gray-500 text-xs italic mb-6">
-                  Palakkad | Kozhikode, Kerala, India | UAE
-                </p>
-
-                <div className="flex items-center gap-3">
-                  <a
-                    href="https://www.linkedin.com/in/muhammed-shafi-v/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-2.5 rounded-lg bg-[#1D1D1D] border border-[#333] text-gray-400 hover:text-[#F5B700] hover:border-[#F5B700] transition-colors"
-                    aria-label="Shafi Pulakkad LinkedIn"
-                  >
-                    <Linkedin size={18} />
-                  </a>
-                  <a
-                    href="https://www.instagram.com/shafi_pulakkad/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-2.5 rounded-lg bg-[#1D1D1D] border border-[#333] text-gray-400 hover:text-[#F5B700] hover:border-[#F5B700] transition-colors"
-                    aria-label="Shafi Pulakkad Instagram"
-                  >
-                    <Instagram size={18} />
-                  </a>
-                  <a
-                    href={createWhatsAppUrl(
-                      "Hi Shafi, I would like to connect with you regarding business growth and marketing."
-                    )}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-2.5 rounded-lg bg-[#F5B700] text-[#050505] font-bold hover:bg-[#FFD84D] transition-colors"
-                    aria-label="Chat on WhatsApp"
-                  >
-                    <MessageCircle size={18} />
-                  </a>
-                </div>
-
-                <div className="mt-8 pt-4 border-t border-[#222] w-full text-[11px] text-gray-500">
-                  Official Founder Profile &amp; Bio
+                {/* Info overlay */}
+                <div className="absolute bottom-0 left-0 right-0 p-6">
+                  <h3 className="text-2xl font-bold text-white mb-1">Shafi Pulakkad</h3>
+                  <p className="text-[#F5B700] text-xs font-mono uppercase tracking-widest mb-3">
+                    Founder & Growth Strategist
+                  </p>
+                  <p className="text-gray-400 text-xs mb-4">
+                    Palakkad | Kozhikode, Kerala, India | UAE
+                  </p>
+                  <div className="flex items-center gap-2">
+                    <a
+                      href="https://www.linkedin.com/in/muhammed-shafi-v/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-2 rounded-lg bg-black/60 backdrop-blur-sm border border-white/10 text-gray-300 hover:text-[#F5B700] hover:border-[#F5B700] transition-colors"
+                      aria-label="Shafi Pulakkad LinkedIn"
+                    >
+                      <Linkedin size={16} />
+                    </a>
+                    <a
+                      href="https://www.instagram.com/shafi_pulakkad/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-2 rounded-lg bg-black/60 backdrop-blur-sm border border-white/10 text-gray-300 hover:text-[#F5B700] hover:border-[#F5B700] transition-colors"
+                      aria-label="Shafi Pulakkad Instagram"
+                    >
+                      <Instagram size={16} />
+                    </a>
+                    <a
+                      href={createWhatsAppUrl(
+                        "Hi Shafi, I would like to connect with you regarding business growth and marketing."
+                      )}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="p-2 rounded-lg bg-[#F5B700] text-[#050505] font-bold hover:bg-[#FFD84D] transition-colors"
+                      aria-label="Chat on WhatsApp"
+                    >
+                      <MessageCircle size={16} />
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>

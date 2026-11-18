@@ -22,24 +22,13 @@ export default function Footer() {
     <footer className="bg-[#0A0A0A] border-t border-[#1E1E1E]">
       {/* CTA Strip */}
       <div className="bg-[#F5B700]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex flex-col md:flex-row items-center justify-between gap-6">
-          <div>
-            <h3 className="text-[#050505] text-2xl md:text-3xl font-bold">
-              Ready to Grow Your Business?
-            </h3>
-            <p className="text-[#050505]/70 mt-1 text-sm">
-              Let&apos;s discuss your goals and build the right strategy.
-            </p>
-          </div>
-          <a
-            href={businessUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 bg-[#050505] text-white font-bold px-7 py-3.5 rounded-md hover:bg-[#1A1A1A] transition-colors whitespace-nowrap"
-          >
-            <MessageCircle size={18} />
-            Start a Conversation
-          </a>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center">
+          <h3 className="text-[#050505] text-2xl md:text-3xl font-bold">
+            Ready to Grow Your Business?
+          </h3>
+          <p className="text-[#050505]/75 mt-1 text-sm">
+            Let&apos;s discuss your goals and build the right strategy.
+          </p>
         </div>
       </div>
 
