@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import ScrollToTop from "@/components/ui/ScrollToTop";
+import FloatingWhatsApp from "@/components/ui/FloatingWhatsApp";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://growclickers.com"),
@@ -136,7 +136,7 @@ export default function RootLayout({
         <Header />
         <main>{children}</main>
         <Footer />
-        <ScrollToTop />
+        <FloatingWhatsApp />
       </body>
     </html>
   );
