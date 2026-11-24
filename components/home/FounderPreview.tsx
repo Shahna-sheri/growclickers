@@ -96,24 +96,56 @@ export default function FounderPreview() {
             </motion.div>
 
             <h2 className="section-heading mb-5">
-              <span className="block overflow-hidden py-1">
+              <span className="block overflow-hidden py-2 -my-1.5">
                 <motion.span
                   initial={{ y: "110%", opacity: 0 }}
                   animate={isInView ? { y: "0%", opacity: 1 } : {}}
                   transition={{ duration: 0.7, delay: 0.1, ease: EASE_PREMIUM }}
                   className="inline-block"
                 >
-                  Built Through Experience.{" "}
+                  <motion.span
+                    whileHover={{
+                      y: -8,
+                      scale: 1.035,
+                      filter: "drop-shadow(0 12px 24px rgba(255, 255, 255, 0.25)) drop-shadow(0 4px 10px rgba(245, 183, 0, 0.3))",
+                    }}
+                    whileTap={{ scale: 0.98 }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 420,
+                      damping: 18,
+                      mass: 0.75,
+                    }}
+                    className="inline-block cursor-pointer select-none origin-center transition-colors duration-200"
+                  >
+                    Built Through Experience.{" "}
+                  </motion.span>
                 </motion.span>
               </span>
-              <span className="block overflow-hidden py-1">
+              <span className="block overflow-hidden py-2 -my-1.5">
                 <motion.span
                   initial={{ y: "110%", opacity: 0 }}
                   animate={isInView ? { y: "0%", opacity: 1 } : {}}
                   transition={{ duration: 0.7, delay: 0.22, ease: EASE_PREMIUM }}
                   className="inline-block text-[#F5B700]"
                 >
-                  Driven by Growth.
+                  <motion.span
+                    whileHover={{
+                      y: -8,
+                      scale: 1.04,
+                      filter: "drop-shadow(0 14px 28px rgba(245, 183, 0, 0.7))",
+                    }}
+                    whileTap={{ scale: 0.98 }}
+                    transition={{
+                      type: "spring",
+                      stiffness: 420,
+                      damping: 18,
+                      mass: 0.75,
+                    }}
+                    className="inline-block cursor-pointer select-none origin-center transition-colors duration-200"
+                  >
+                    Driven by Growth.
+                  </motion.span>
                 </motion.span>
               </span>
             </h2>

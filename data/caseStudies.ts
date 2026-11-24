@@ -429,7 +429,7 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     id: "z-dance-fitness-studio-campaign",
-    clientName: "Z1fitto",
+    clientName: "Z1fito",
     businessCategory: "Fitness & Dance Studio",
     campaignObjective: "Trial Class Registrations & Studio Membership Inquiries",
     campaignPeriod: "Active Verified Campaign",

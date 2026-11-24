@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import { ArrowRight, MessageCircle, ChevronDown, Sparkles, TrendingUp } from "lucide-react";
 import { motion } from "framer-motion";
@@ -7,6 +8,7 @@ import { createWhatsAppUrl, WHATSAPP_MESSAGES } from "@/lib/whatsapp";
 import { EASE_PREMIUM } from "@/lib/animations";
 
 export default function HeroSection() {
+  const [isRevealed, setIsRevealed] = useState(false);
   const businessUrl = createWhatsAppUrl(WHATSAPP_MESSAGES.businessEnquiry);
 
   return (
@@ -84,36 +86,85 @@ export default function HeroSection() {
           </span>
         </motion.div>
 
-        {/* Headline with word-reveal animation */}
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[1.05] tracking-tight mb-6">
-          <span className="block overflow-hidden py-1">
+        {/* Headline with word-reveal animation & smooth hover pop-up */}
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[1.08] tracking-tight mb-6">
+          <span className={`block transition-all duration-300 ${isRevealed ? "overflow-visible" : "overflow-hidden"} py-2 sm:py-3 -my-1.5 sm:-my-2`}>
             <motion.span
               initial={{ y: "110%", opacity: 0 }}
               animate={{ y: "0%", opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.1, ease: EASE_PREMIUM }}
+              onAnimationComplete={() => setIsRevealed(true)}
               className="inline-block"
             >
-              We Build Businesses
+              <motion.span
+                whileHover={{
+                  y: -10,
+                  scale: 1.04,
+                  filter: "drop-shadow(0 14px 30px rgba(255, 255, 255, 0.28)) drop-shadow(0 4px 12px rgba(245, 183, 0, 0.35))",
+                }}
+                whileTap={{ scale: 0.98 }}
+                transition={{
+                  type: "spring",
+                  stiffness: 420,
+                  damping: 18,
+                  mass: 0.75,
+                }}
+                className="inline-block cursor-pointer select-none origin-center transition-colors duration-200"
+              >
+                We Build Businesses
+              </motion.span>
             </motion.span>
           </span>
-          <span className="block overflow-hidden py-1">
+          <span className={`block transition-all duration-300 ${isRevealed ? "overflow-visible" : "overflow-hidden"} py-2 sm:py-3 -my-1.5 sm:-my-2`}>
             <motion.span
               initial={{ y: "110%", opacity: 0 }}
               animate={{ y: "0%", opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.22, ease: EASE_PREMIUM }}
               className="inline-block text-[#F5B700]"
             >
-              That Grow Beyond
+              <motion.span
+                whileHover={{
+                  y: -10,
+                  scale: 1.045,
+                  filter: "drop-shadow(0 14px 35px rgba(245, 183, 0, 0.75))",
+                }}
+                whileTap={{ scale: 0.98 }}
+                transition={{
+                  type: "spring",
+                  stiffness: 420,
+                  damping: 18,
+                  mass: 0.75,
+                }}
+                className="inline-block cursor-pointer select-none origin-center transition-colors duration-200"
+              >
+                That Grow Beyond
+              </motion.span>
             </motion.span>
           </span>
-          <span className="block overflow-hidden py-1">
+          <span className={`block transition-all duration-300 ${isRevealed ? "overflow-visible" : "overflow-hidden"} py-2 sm:py-3 -my-1.5 sm:-my-2`}>
             <motion.span
               initial={{ y: "110%", opacity: 0 }}
               animate={{ y: "0%", opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.34, ease: EASE_PREMIUM }}
               className="inline-block"
             >
-              Marketing.
+              <motion.span
+                whileHover={{
+                  y: -10,
+                  scale: 1.045,
+                  filter: "drop-shadow(0 14px 30px rgba(255, 255, 255, 0.28)) drop-shadow(0 4px 12px rgba(245, 183, 0, 0.35))",
+                }}
+                whileTap={{ scale: 0.98 }}
+                transition={{
+                  type: "spring",
+                  stiffness: 420,
+                  damping: 18,
+                  mass: 0.75,
+                }}
+                className="inline-block cursor-pointer select-none origin-center transition-colors duration-200"
+              >
+                Marketing.
+              </motion.span>
             </motion.span>
           </span>
         </h1>

@@ -276,8 +276,8 @@ function CaseStudyCard({
               <div
                 key={i}
                 className={`p-3 rounded-lg border ${kr.highlight
-                    ? "bg-[#F5B700]/10 border-[#F5B700]/40"
-                    : "bg-[#141414] border-[#262626]"
+                  ? "bg-[#F5B700]/10 border-[#F5B700]/40"
+                  : "bg-[#141414] border-[#262626]"
                   }`}
               >
                 <div className="text-[10px] text-gray-400 uppercase font-medium">
@@ -562,11 +562,10 @@ export default function ResultsPage() {
               whileTap={{ scale: 0.95 }}
               transition={{ duration: 0.2 }}
               onClick={() => setActiveSectionId("all")}
-              className={`px-4 sm:px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold tracking-wide transition-all duration-200 border ${
-                activeSectionId === "all"
+              className={`px-4 sm:px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold tracking-wide transition-all duration-200 border ${activeSectionId === "all"
                   ? "bg-[#F5B700] text-[#050505] border-[#F5B700] shadow-sm shadow-[#F5B700]/30 font-bold"
                   : "bg-[#111111] text-gray-400 border-[#2A2A2A] hover:border-[#F5B700]/40 hover:text-white"
-              }`}
+                }`}
             >
               All Sections
             </motion.button>
@@ -580,11 +579,10 @@ export default function ResultsPage() {
                   whileTap={{ scale: 0.95 }}
                   transition={{ duration: 0.2 }}
                   onClick={() => setActiveSectionId(section.id)}
-                  className={`px-4 sm:px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold tracking-wide transition-all duration-200 border ${
-                    isActive
+                  className={`px-4 sm:px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold tracking-wide transition-all duration-200 border ${isActive
                       ? "bg-[#F5B700] text-[#050505] border-[#F5B700] shadow-sm shadow-[#F5B700]/30 font-bold"
                       : "bg-[#111111] text-gray-400 border-[#2A2A2A] hover:border-[#F5B700]/40 hover:text-white"
-                  }`}
+                    }`}
                 >
                   {section.label}
                 </motion.button>
@@ -707,8 +705,8 @@ export default function ResultsPage() {
                     <div
                       key={i}
                       className={`p-3 rounded-lg border ${r.highlight
-                          ? "bg-[#F5B700]/10 border-[#F5B700]/50"
-                          : "bg-[#141414] border-[#282828]"
+                        ? "bg-[#F5B700]/10 border-[#F5B700]/50"
+                        : "bg-[#141414] border-[#282828]"
                         }`}
                     >
                       <div className="text-xs text-gray-400 font-medium">
@@ -790,7 +788,7 @@ export default function ResultsPage() {
           </p>
           <a
             href={createWhatsAppUrl(
-              "Hi GrowClickers, I reviewed your verified client case studies (VIPIN KK & CO, Saife Valappra, COCS, PREP D, SIZORE, Savari Cycles, GIFTED, KOKKADANS, Momo Chat, Pecific Appliances, Z1fitto, Noushi's Naturals, RADGIVER, and RAYYAN) and want to discuss building a high-performing growth system for my brand."
+              "Hi GrowClickers, I reviewed your verified client case studies (VIPIN KK & CO, Saife Valappra, COCS, PREP D, SIZORE, Savari Cycles, GIFTED, KOKKADANS, Momo Chat, Pecific Appliances, Z1fito, Noushi's Naturals, RADGIVER, and RAYYAN) and want to discuss building a high-performing growth system for my brand."
             )}
             target="_blank"
             rel="noopener noreferrer"
