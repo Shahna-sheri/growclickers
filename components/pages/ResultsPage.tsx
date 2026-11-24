@@ -5,6 +5,7 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { caseStudies, CaseStudy } from "@/data/caseStudies";
 import { createWhatsAppUrl } from "@/lib/whatsapp";
+import { EASE_PREMIUM } from "@/lib/animations";
 import {
   BarChart3,
   Calendar,
@@ -17,6 +18,7 @@ import {
   TrendingUp,
   ShieldCheck,
   Zap,
+  Sparkles,
 } from "lucide-react";
 
 interface SectionHighlight {
@@ -109,11 +111,12 @@ function CaseStudyCard({
 }) {
   return (
     <motion.article
-      initial={{ opacity: 0, y: 25 }}
+      initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.45, delay: (idx % 2) * 0.1 }}
-      className="card-dark border border-[#262626] rounded-2xl overflow-hidden hover:border-[#F5B700]/40 transition-all duration-300 flex flex-col justify-between"
+      transition={{ duration: 0.6, delay: (idx % 2) * 0.1, ease: EASE_PREMIUM }}
+      whileHover={{ y: -6, transition: { duration: 0.25, ease: EASE_PREMIUM } }}
+      className="card-dark border border-[#262626] rounded-2xl overflow-hidden hover:border-[#F5B700]/50 transition-all duration-300 flex flex-col justify-between"
     >
       <div>
         {/* Header Strip */}
@@ -492,25 +495,53 @@ export default function ResultsPage() {
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
-            initial={{ opacity: 0, y: 25 }}
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.5, ease: EASE_PREMIUM }}
+            className="inline-flex items-center gap-1.5 mb-3"
           >
-            <span className="section-label">Verified Track Record</span>
-            <h1 className="section-heading mt-3 mb-6 max-w-4xl mx-auto">
-              Real Campaigns. <span className="text-[#F5B700]">Real Data.</span>
-            </h1>
-            <p className="section-subheading max-w-3xl mx-auto">
-              We stand for radical integrity in marketing. We never fabricate results, purchase testimonials,
-              or present inflated vanity metrics. Every case study below outlines our strategic approach and verified performance data.
-            </p>
+            <Sparkles size={13} className="text-[#F5B700]" />
+            <span className="section-label mb-0">Verified Track Record</span>
           </motion.div>
+
+          <h1 className="section-heading mt-2 mb-6 max-w-4xl mx-auto">
+            <span className="block overflow-hidden py-1">
+              <motion.span
+                initial={{ y: "110%", opacity: 0 }}
+                animate={{ y: "0%", opacity: 1 }}
+                transition={{ duration: 0.7, delay: 0.1, ease: EASE_PREMIUM }}
+                className="inline-block"
+              >
+                Real Campaigns.{" "}
+              </motion.span>
+            </span>
+            <span className="block overflow-hidden py-1">
+              <motion.span
+                initial={{ y: "110%", opacity: 0 }}
+                animate={{ y: "0%", opacity: 1 }}
+                transition={{ duration: 0.7, delay: 0.22, ease: EASE_PREMIUM }}
+                className="inline-block text-[#F5B700]"
+              >
+                Real Data.
+              </motion.span>
+            </span>
+          </h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.65, delay: 0.35, ease: EASE_PREMIUM }}
+            className="section-subheading max-w-3xl mx-auto"
+          >
+            We stand for radical integrity in marketing. We never fabricate results, purchase testimonials,
+            or present inflated vanity metrics. Every case study below outlines our strategic approach and verified performance data.
+          </motion.p>
 
           {/* Ethics Banner */}
           <motion.div
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.15 }}
+            transition={{ duration: 0.5, delay: 0.45, ease: EASE_PREMIUM }}
             className="mt-8 max-w-2xl mx-auto bg-[#141414] border border-[#2C2C2C] rounded-lg p-4 flex items-center gap-3 text-left"
           >
             <AlertCircle size={20} className="text-[#F5B700] shrink-0" />
@@ -519,36 +550,44 @@ export default function ResultsPage() {
             </p>
           </motion.div>
 
-          {/* Section Navigation Tabs */}
+          {/* Section Navigation Tabs with smooth spring hover */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.25 }}
+            transition={{ duration: 0.5, delay: 0.55, ease: EASE_PREMIUM }}
             className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 mt-10"
           >
-            <button
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ duration: 0.2 }}
               onClick={() => setActiveSectionId("all")}
-              className={`px-4 sm:px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold tracking-wide transition-all duration-200 border ${activeSectionId === "all"
+              className={`px-4 sm:px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold tracking-wide transition-all duration-200 border ${
+                activeSectionId === "all"
                   ? "bg-[#F5B700] text-[#050505] border-[#F5B700] shadow-sm shadow-[#F5B700]/30 font-bold"
                   : "bg-[#111111] text-gray-400 border-[#2A2A2A] hover:border-[#F5B700]/40 hover:text-white"
-                }`}
+              }`}
             >
               All Sections
-            </button>
+            </motion.button>
 
             {SECTIONS.map((section) => {
               const isActive = activeSectionId === section.id;
               return (
-                <button
+                <motion.button
                   key={section.id}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  transition={{ duration: 0.2 }}
                   onClick={() => setActiveSectionId(section.id)}
-                  className={`px-4 sm:px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold tracking-wide transition-all duration-200 border ${isActive
+                  className={`px-4 sm:px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold tracking-wide transition-all duration-200 border ${
+                    isActive
                       ? "bg-[#F5B700] text-[#050505] border-[#F5B700] shadow-sm shadow-[#F5B700]/30 font-bold"
                       : "bg-[#111111] text-gray-400 border-[#2A2A2A] hover:border-[#F5B700]/40 hover:text-white"
-                    }`}
+                  }`}
                 >
                   {section.label}
-                </button>
+                </motion.button>
               );
             })}
           </motion.div>

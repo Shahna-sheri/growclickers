@@ -2,6 +2,7 @@
 
 import { useRef, type ReactNode } from "react";
 import { motion, useInView } from "framer-motion";
+import { EASE_PREMIUM } from "@/lib/animations";
 
 interface SectionWrapperProps {
   children: ReactNode;
@@ -18,9 +19,9 @@ export default function SectionWrapper({ children, className = "", id, delay = 0
     <motion.section
       ref={ref}
       id={id}
-      initial={{ opacity: 0, y: 40 }}
+      initial={{ opacity: 0, y: 35 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, delay, ease: "easeOut" }}
+      transition={{ duration: 0.75, delay, ease: EASE_PREMIUM }}
       className={className}
     >
       {children}

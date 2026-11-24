@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { courses, Course } from "@/data/courses";
 import { createWhatsAppUrl } from "@/lib/whatsapp";
+import { EASE_PREMIUM } from "@/lib/animations";
 import {
   CheckCircle2,
   Clock,
@@ -15,6 +16,7 @@ import {
   X,
   BookOpen,
   ShieldCheck,
+  Sparkles,
 } from "lucide-react";
 
 export default function AcademyPage() {
@@ -42,25 +44,49 @@ export default function AcademyPage() {
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
-            initial={{ opacity: 0, y: 25 }}
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.5, ease: EASE_PREMIUM }}
+            className="inline-flex items-center gap-2 border border-[#F5B700]/30 bg-[#F5B700]/10 rounded-full px-4 py-1.5 mb-6 shadow-sm shadow-[#F5B700]/10"
           >
-            <div className="inline-flex items-center gap-2 border border-[#F5B700]/30 bg-[#F5B700]/10 rounded-full px-4 py-1.5 mb-6">
-              <GraduationCap size={16} className="text-[#F5B700]" />
-              <span className="text-[#F5B700] text-xs font-semibold tracking-widest uppercase">
-                GrowClickers Academy
-              </span>
-            </div>
-            <h1 className="text-3xl sm:text-5xl md:text-6xl font-black text-white leading-tight max-w-4xl mx-auto mb-6">
-              Don&apos;t Just Learn Marketing. <br />
-              <span className="text-[#F5B700]">Learn How to Generate Real Results.</span>
-            </h1>
-            <p className="text-gray-400 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed">
-              No generic theory or outdated tutorials. Master performance marketing directly on real ad accounts,
-              live campaign setups, and actual client scenarios guided by seasoned practitioners.
-            </p>
+            <GraduationCap size={16} className="text-[#F5B700]" />
+            <span className="text-[#F5B700] text-xs font-semibold tracking-widest uppercase">
+              GrowClickers Academy
+            </span>
           </motion.div>
+
+          <h1 className="text-3xl sm:text-5xl md:text-6xl font-black text-white leading-tight max-w-4xl mx-auto mb-6">
+            <span className="block overflow-hidden py-1">
+              <motion.span
+                initial={{ y: "110%", opacity: 0 }}
+                animate={{ y: "0%", opacity: 1 }}
+                transition={{ duration: 0.7, delay: 0.1, ease: EASE_PREMIUM }}
+                className="inline-block"
+              >
+                Don&apos;t Just Learn Marketing.
+              </motion.span>
+            </span>
+            <span className="block overflow-hidden py-1">
+              <motion.span
+                initial={{ y: "110%", opacity: 0 }}
+                animate={{ y: "0%", opacity: 1 }}
+                transition={{ duration: 0.7, delay: 0.22, ease: EASE_PREMIUM }}
+                className="inline-block text-[#F5B700]"
+              >
+                Learn How to Generate Real Results.
+              </motion.span>
+            </span>
+          </h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.65, delay: 0.35, ease: EASE_PREMIUM }}
+            className="text-gray-400 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed"
+          >
+            No generic theory or outdated tutorials. Master performance marketing directly on real ad accounts,
+            live campaign setups, and actual client scenarios guided by seasoned practitioners.
+          </motion.p>
 
           {/* Quick value propositions */}
           <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto text-left">
@@ -70,19 +96,26 @@ export default function AcademyPage() {
               { icon: BookOpen, title: "Strategic Thinking", desc: "Beyond button clicking into business ROI" },
               { icon: ShieldCheck, title: "Post-Course Support", desc: "Ongoing mentorship for campaigns" },
             ].map((item, i) => (
-              <div key={i} className="bg-[#111] border border-[#262626] rounded-xl p-4">
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.4 + i * 0.08, ease: EASE_PREMIUM }}
+                whileHover={{ y: -4, transition: { duration: 0.2 } }}
+                className="bg-[#111] border border-[#262626] hover:border-[#F5B700]/40 rounded-xl p-4 transition-colors"
+              >
                 <item.icon size={20} className="text-[#F5B700] mb-2" />
                 <div className="text-white text-xs font-bold">{item.title}</div>
                 <div className="text-gray-500 text-[11px] mt-0.5">{item.desc}</div>
-              </div>
+              </motion.div>
             ))}
           </div>
 
-          {/* Filter Pills */}
+          {/* Filter Pills with smooth spring hover */}
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            transition={{ duration: 0.5, delay: 0.6, ease: EASE_PREMIUM }}
             className="flex justify-center gap-3 mt-12"
           >
             {[
@@ -90,8 +123,11 @@ export default function AcademyPage() {
               { id: "one-on-one", label: "Personal 1:1 Mentorship" },
               { id: "group", label: "Group Cohorts" },
             ].map((f) => (
-              <button
+              <motion.button
                 key={f.id}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ duration: 0.2 }}
                 onClick={() => setSelectedFormat(f.id as "all" | "one-on-one" | "group")}
                 className={`px-5 py-2.5 rounded-full text-xs font-semibold tracking-wider transition-all duration-200 border ${
                   selectedFormat === f.id
@@ -100,7 +136,7 @@ export default function AcademyPage() {
                 }`}
               >
                 {f.label}
-              </button>
+              </motion.button>
             ))}
           </motion.div>
         </div>
@@ -115,10 +151,11 @@ export default function AcademyPage() {
             return (
               <motion.div
                 key={course.id}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 35 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.5, delay: idx * 0.08 }}
+                transition={{ duration: 0.6, delay: idx * 0.08, ease: EASE_PREMIUM }}
+                whileHover={{ y: -6, transition: { duration: 0.25, ease: EASE_PREMIUM } }}
                 className="card-dark border border-[#282828] rounded-2xl overflow-hidden hover:border-[#F5B700]/50 transition-all duration-300 flex flex-col justify-between group relative"
               >
                 {/* Badge if exists */}

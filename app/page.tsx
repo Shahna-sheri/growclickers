@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import HeroSection from "@/components/home/HeroSection";
+import BrandMarquee from "@/components/home/BrandMarquee";
 import BrandIntro from "@/components/home/BrandIntro";
 import GrowthSystem from "@/components/home/GrowthSystem";
 import ServicesOverview from "@/components/home/ServicesOverview";
@@ -19,6 +20,7 @@ export default function HomePage() {
   return (
     <>
       <HeroSection />
+      <BrandMarquee />
       <BrandIntro />
       <GrowthSystem />
       <ServicesOverview />

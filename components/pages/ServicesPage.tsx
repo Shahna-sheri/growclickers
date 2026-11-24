@@ -1,9 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { services } from "@/data/services";
 import { createWhatsAppUrl } from "@/lib/whatsapp";
+import { EASE_PREMIUM } from "@/lib/animations";
 import {
   TrendingUp,
   Layers,
@@ -17,6 +18,7 @@ import {
   MessageCircle,
   ArrowRight,
   ShieldCheck,
+  Sparkles,
   type LucideIcon,
 } from "lucide-react";
 
@@ -71,39 +73,70 @@ export default function ServicesPage() {
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
-            initial={{ opacity: 0, y: 25 }}
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.5, ease: EASE_PREMIUM }}
+            className="inline-flex items-center gap-1.5 mb-3"
           >
-            <span className="section-label">End-to-End Capabilities</span>
-            <h1 className="section-heading mt-3 mb-6 max-w-4xl mx-auto">
-              Strategic Services Designed for{" "}
-              <span className="text-[#F5B700]">Sustainable Business Growth</span>
-            </h1>
-            <p className="section-subheading max-w-3xl mx-auto">
-              We do not treat marketing as isolated ad clicks. We construct complete growth systems
-              spanning strategic positioning, brand authority, high-intent customer acquisition, and conversion infrastructure.
-            </p>
+            <Sparkles size={13} className="text-[#F5B700]" />
+            <span className="section-label mb-0">End-to-End Capabilities</span>
           </motion.div>
 
-          {/* Filter Pills */}
+          <h1 className="section-heading mt-2 mb-6 max-w-4xl mx-auto">
+            <span className="block overflow-hidden py-1">
+              <motion.span
+                initial={{ y: "110%", opacity: 0 }}
+                animate={{ y: "0%", opacity: 1 }}
+                transition={{ duration: 0.7, delay: 0.1, ease: EASE_PREMIUM }}
+                className="inline-block"
+              >
+                Strategic Services Designed for{" "}
+              </motion.span>
+            </span>
+            <span className="block overflow-hidden py-1">
+              <motion.span
+                initial={{ y: "110%", opacity: 0 }}
+                animate={{ y: "0%", opacity: 1 }}
+                transition={{ duration: 0.7, delay: 0.22, ease: EASE_PREMIUM }}
+                className="inline-block text-[#F5B700]"
+              >
+                Sustainable Business Growth
+              </motion.span>
+            </span>
+          </h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.65, delay: 0.35, ease: EASE_PREMIUM }}
+            className="section-subheading max-w-3xl mx-auto"
+          >
+            We do not treat marketing as isolated ad clicks. We construct complete growth systems
+            spanning strategic positioning, brand authority, high-intent customer acquisition, and conversion infrastructure.
+          </motion.p>
+
+          {/* Filter Pills with spring micro-interactions */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="flex flex-wrap justify-center gap-2 mt-10"
+            transition={{ duration: 0.5, delay: 0.45, ease: EASE_PREMIUM }}
+            className="flex flex-wrap justify-center gap-2.5 mt-10"
           >
             {categories.map((cat) => (
-              <button
+              <motion.button
                 key={cat.id}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ duration: 0.2 }}
                 onClick={() => setActiveCategory(cat.id)}
-                className={`px-5 py-2.5 rounded-full text-xs font-semibold tracking-wider uppercase transition-all duration-200 border ${activeCategory === cat.id
-                  ? "bg-[#F5B700] text-[#050505] border-[#F5B700] shadow-md shadow-[#F5B700]/20"
-                  : "bg-[#111111] text-gray-400 border-[#2A2A2A] hover:border-[#F5B700]/50 hover:text-white"
-                  }`}
+                className={`px-5 py-2.5 rounded-full text-xs font-semibold tracking-wider uppercase transition-all duration-200 border ${
+                  activeCategory === cat.id
+                    ? "bg-[#F5B700] text-[#050505] border-[#F5B700] shadow-md shadow-[#F5B700]/30 font-bold"
+                    : "bg-[#111111] text-gray-400 border-[#2A2A2A] hover:border-[#F5B700]/50 hover:text-white"
+                }`}
               >
                 {cat.label}
-              </button>
+              </motion.button>
             ))}
           </motion.div>
         </div>
@@ -120,11 +153,12 @@ export default function ServicesPage() {
               <motion.div
                 key={service.id}
                 id={service.id}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 35 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.5, delay: index * 0.05 }}
-                className="card-dark p-8 md:p-10 border border-[#242424] hover:border-[#F5B700]/40 transition-all duration-300 relative group overflow-hidden"
+                transition={{ duration: 0.6, delay: index * 0.06, ease: EASE_PREMIUM }}
+                whileHover={{ y: -6, transition: { duration: 0.25, ease: EASE_PREMIUM } }}
+                className="card-dark p-8 md:p-10 border border-[#242424] hover:border-[#F5B700]/50 transition-all duration-300 relative group overflow-hidden"
               >
                 {/* Accent corner bar */}
                 <div className="absolute top-0 left-0 w-1.5 h-full bg-gradient-to-b from-[#F5B700] to-transparent opacity-60 group-hover:opacity-100 transition-opacity" />

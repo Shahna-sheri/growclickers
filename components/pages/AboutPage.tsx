@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { createWhatsAppUrl } from "@/lib/whatsapp";
+import { EASE_PREMIUM } from "@/lib/animations";
 import {
   Compass,
   Instagram,
@@ -13,6 +14,7 @@ import {
   Target,
   TrendingUp,
   Users,
+  Sparkles,
 } from "lucide-react";
 
 export default function AboutPage() {
@@ -32,18 +34,46 @@ export default function AboutPage() {
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
-            initial={{ opacity: 0, y: 25 }}
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.5, ease: EASE_PREMIUM }}
+            className="inline-flex items-center gap-1.5 mb-3"
           >
-            <span className="section-label">Brand & Leadership</span>
-            <h1 className="section-heading mt-3 mb-6 max-w-4xl mx-auto">
-              Built on Strategy. Driven by Real <span className="text-[#F5B700]">Business Growth.</span>
-            </h1>
-            <p className="section-subheading max-w-3xl mx-auto">
-              GrowClickers was born out of a clear realization: traditional marketing agencies sell clicks and superficial impressions, but businesses actually need qualified customers, brand strength, and predictable revenue systems.
-            </p>
+            <Sparkles size={13} className="text-[#F5B700]" />
+            <span className="section-label mb-0">Brand & Leadership</span>
           </motion.div>
+
+          <h1 className="section-heading mt-2 mb-6 max-w-4xl mx-auto">
+            <span className="block overflow-hidden py-1">
+              <motion.span
+                initial={{ y: "110%", opacity: 0 }}
+                animate={{ y: "0%", opacity: 1 }}
+                transition={{ duration: 0.7, delay: 0.1, ease: EASE_PREMIUM }}
+                className="inline-block"
+              >
+                Built on Strategy. Driven by Real{" "}
+              </motion.span>
+            </span>
+            <span className="block overflow-hidden py-1">
+              <motion.span
+                initial={{ y: "110%", opacity: 0 }}
+                animate={{ y: "0%", opacity: 1 }}
+                transition={{ duration: 0.7, delay: 0.22, ease: EASE_PREMIUM }}
+                className="inline-block text-[#F5B700]"
+              >
+                Business Growth.
+              </motion.span>
+            </span>
+          </h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.65, delay: 0.35, ease: EASE_PREMIUM }}
+            className="section-subheading max-w-3xl mx-auto"
+          >
+            GrowClickers was born out of a clear realization: traditional marketing agencies sell clicks and superficial impressions, but businesses actually need qualified customers, brand strength, and predictable revenue systems.
+          </motion.p>
         </div>
       </section>
 

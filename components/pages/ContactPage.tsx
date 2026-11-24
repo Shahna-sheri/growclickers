@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { services } from "@/data/services";
 import { createWhatsAppUrl, WHATSAPP_MESSAGES } from "@/lib/whatsapp";
 import { COMPANY_SOCIAL_LINKS } from "@/data/socials";
+import { EASE_PREMIUM } from "@/lib/animations";
 import {
   Mail,
   MapPin,
@@ -18,6 +19,7 @@ import {
   Linkedin,
   Facebook,
   Youtube,
+  Sparkles,
 } from "lucide-react";
 
 function XIcon({ size = 16 }: { size?: number }) {
@@ -150,18 +152,46 @@ export default function ContactPage() {
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
-            initial={{ opacity: 0, y: 25 }}
+            initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.5, ease: EASE_PREMIUM }}
+            className="inline-flex items-center gap-1.5 mb-3"
           >
-            <span className="section-label">Initiate Conversation</span>
-            <h1 className="section-heading mt-3 mb-6 max-w-4xl mx-auto">
-              Let&apos;s Discuss Your <span className="text-[#F5B700]">Business Goals.</span>
-            </h1>
-            <p className="section-subheading max-w-2xl mx-auto">
-              Whether you are looking to audit an underperforming ad account, scale qualified leads, or elevate your brand position, our team is ready to assist.
-            </p>
+            <Sparkles size={13} className="text-[#F5B700]" />
+            <span className="section-label mb-0">Initiate Conversation</span>
           </motion.div>
+
+          <h1 className="section-heading mt-2 mb-6 max-w-4xl mx-auto">
+            <span className="block overflow-hidden py-1">
+              <motion.span
+                initial={{ y: "110%", opacity: 0 }}
+                animate={{ y: "0%", opacity: 1 }}
+                transition={{ duration: 0.7, delay: 0.1, ease: EASE_PREMIUM }}
+                className="inline-block"
+              >
+                Let&apos;s Discuss Your{" "}
+              </motion.span>
+            </span>
+            <span className="block overflow-hidden py-1">
+              <motion.span
+                initial={{ y: "110%", opacity: 0 }}
+                animate={{ y: "0%", opacity: 1 }}
+                transition={{ duration: 0.7, delay: 0.22, ease: EASE_PREMIUM }}
+                className="inline-block text-[#F5B700]"
+              >
+                Business Goals.
+              </motion.span>
+            </span>
+          </h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.65, delay: 0.35, ease: EASE_PREMIUM }}
+            className="section-subheading max-w-2xl mx-auto"
+          >
+            Whether you are looking to audit an underperforming ad account, scale qualified leads, or elevate your brand position, our team is ready to assist.
+          </motion.p>
         </div>
       </section>
 

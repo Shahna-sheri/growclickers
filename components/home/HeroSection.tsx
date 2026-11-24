@@ -1,9 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, MessageCircle, ChevronDown } from "lucide-react";
+import { ArrowRight, MessageCircle, ChevronDown, Sparkles, TrendingUp } from "lucide-react";
 import { motion } from "framer-motion";
 import { createWhatsAppUrl, WHATSAPP_MESSAGES } from "@/lib/whatsapp";
+import { EASE_PREMIUM } from "@/lib/animations";
 
 export default function HeroSection() {
   const businessUrl = createWhatsAppUrl(WHATSAPP_MESSAGES.businessEnquiry);
@@ -20,101 +21,219 @@ export default function HeroSection() {
         }}
       />
 
-      {/* Yellow glow */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#F5B700]/5 rounded-full blur-[120px] pointer-events-none" />
+      {/* Floating ambient glowing orbs */}
+      <motion.div
+        animate={{
+          scale: [1, 1.15, 1],
+          opacity: [0.06, 0.12, 0.06],
+          y: [-15, 15, -15],
+        }}
+        transition={{
+          duration: 9,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[650px] bg-[#F5B700] rounded-full blur-[140px] pointer-events-none"
+      />
+      <motion.div
+        animate={{
+          scale: [1.1, 1, 1.1],
+          opacity: [0.03, 0.07, 0.03],
+          x: [-20, 20, -20],
+        }}
+        transition={{
+          duration: 12,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        className="absolute bottom-1/4 right-10 w-[400px] h-[400px] bg-[#FFD84D] rounded-full blur-[150px] pointer-events-none"
+      />
 
-      {/* Accent dots */}
-      <div className="absolute top-24 left-10 w-2 h-2 bg-[#F5B700] rounded-full opacity-60" />
-      <div className="absolute top-40 right-16 w-1 h-1 bg-[#F5B700] rounded-full opacity-40" />
-      <div className="absolute bottom-32 left-24 w-1.5 h-1.5 bg-[#F5B700] rounded-full opacity-30" />
+      {/* Accent floating dots */}
+      <motion.div
+        animate={{ y: [-8, 8, -8] }}
+        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-28 left-12 w-2 h-2 bg-[#F5B700] rounded-full opacity-60 shadow-[0_0_10px_#F5B700]"
+      />
+      <motion.div
+        animate={{ y: [6, -6, 6] }}
+        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-44 right-20 w-1.5 h-1.5 bg-[#F5B700] rounded-full opacity-40 shadow-[0_0_8px_#F5B700]"
+      />
+      <motion.div
+        animate={{ y: [-10, 10, -10] }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute bottom-36 left-28 w-2 h-2 bg-[#F5B700] rounded-full opacity-30 shadow-[0_0_10px_#F5B700]"
+      />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
         {/* Badge */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="inline-flex items-center gap-2 border border-[#F5B700]/30 bg-[#F5B700]/5 rounded-full px-4 py-1.5 mb-8"
+          initial={{ opacity: 0, y: 24, scale: 0.95 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.6, ease: EASE_PREMIUM }}
+          whileHover={{ scale: 1.05 }}
+          className="inline-flex items-center gap-2 border border-[#F5B700]/30 bg-[#F5B700]/5 backdrop-blur-sm rounded-full px-4 py-1.5 mb-8 shadow-[0_0_15px_rgba(245,183,0,0.1)] cursor-default transition-all duration-300 hover:border-[#F5B700]/60"
         >
-          <span className="w-1.5 h-1.5 bg-[#F5B700] rounded-full animate-pulse" />
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#F5B700] opacity-75" />
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-[#F5B700]" />
+          </span>
           <span className="text-[#F5B700] text-xs font-semibold tracking-widest uppercase">
             Business Growth Partner
           </span>
         </motion.div>
 
-        {/* Headline */}
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[1.05] tracking-tight mb-6"
-        >
-          We Build Businesses
-          <br />
-          <span className="text-[#F5B700]">That Grow Beyond</span>
-          <br />
-          Marketing.
-        </motion.h1>
+        {/* Headline with word-reveal animation */}
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white leading-[1.05] tracking-tight mb-6">
+          <span className="block overflow-hidden py-1">
+            <motion.span
+              initial={{ y: "110%", opacity: 0 }}
+              animate={{ y: "0%", opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.1, ease: EASE_PREMIUM }}
+              className="inline-block"
+            >
+              We Build Businesses
+            </motion.span>
+          </span>
+          <span className="block overflow-hidden py-1">
+            <motion.span
+              initial={{ y: "110%", opacity: 0 }}
+              animate={{ y: "0%", opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.22, ease: EASE_PREMIUM }}
+              className="inline-block text-[#F5B700]"
+            >
+              That Grow Beyond
+            </motion.span>
+          </span>
+          <span className="block overflow-hidden py-1">
+            <motion.span
+              initial={{ y: "110%", opacity: 0 }}
+              animate={{ y: "0%", opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.34, ease: EASE_PREMIUM }}
+              className="inline-block"
+            >
+              Marketing.
+            </motion.span>
+          </span>
+        </h1>
 
         {/* Subtext */}
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          transition={{ duration: 0.7, delay: 0.45, ease: EASE_PREMIUM }}
           className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed"
         >
           GrowClickers helps businesses build stronger brands, attract the right audience, generate quality leads, and grow with a clear marketing strategy.
         </motion.p>
 
-        {/* CTAs */}
+        {/* Interactive CTAs */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
+          transition={{ duration: 0.7, delay: 0.55, ease: EASE_PREMIUM }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
-          <a
+          <motion.a
             href={businessUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-primary text-base px-8 py-4"
+            whileHover={{ scale: 1.03, y: -2 }}
+            whileTap={{ scale: 0.98 }}
+            transition={{ duration: 0.2, ease: EASE_PREMIUM }}
+            className="btn-primary btn-shimmer text-base px-8 py-4 shadow-lg shadow-[#F5B700]/20 group"
           >
-            <MessageCircle size={20} />
+            <MessageCircle size={20} className="transition-transform group-hover:rotate-12 duration-300" />
             Discuss Your Business Growth
-          </a>
-          <Link href="/results" className="btn-secondary text-base px-8 py-4">
-            Explore Our Results
-            <ArrowRight size={18} />
-          </Link>
+          </motion.a>
+          <motion.div
+            whileHover={{ scale: 1.03, y: -2 }}
+            whileTap={{ scale: 0.98 }}
+            transition={{ duration: 0.2, ease: EASE_PREMIUM }}
+          >
+            <Link href="/results" className="btn-secondary text-base px-8 py-4 group">
+              Explore Our Results
+              <ArrowRight size={18} className="transition-transform group-hover:translate-x-1.5 duration-300" />
+            </Link>
+          </motion.div>
         </motion.div>
 
-        {/* Stats Row */}
+        {/* Stats Row with hover and entrance stagger */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
+          transition={{ duration: 0.7, delay: 0.68, ease: EASE_PREMIUM }}
           className="mt-20 grid grid-cols-3 gap-6 max-w-lg mx-auto"
         >
           {[
             { label: "Growth Strategy", value: "360°" },
             { label: "Platforms", value: "Meta + Google" },
             { label: "Focus", value: "Real Results" },
-          ].map((stat) => (
-            <div key={stat.label} className="text-center">
+          ].map((stat, i) => (
+            <motion.div
+              key={stat.label}
+              whileHover={{ y: -3, scale: 1.05 }}
+              transition={{ duration: 0.2, ease: EASE_PREMIUM }}
+              className="text-center p-2 rounded-lg transition-colors hover:bg-white/[0.02]"
+            >
               <div className="text-[#F5B700] font-bold text-lg md:text-xl">{stat.value}</div>
-              <div className="text-gray-600 text-xs mt-1">{stat.label}</div>
-            </div>
+              <div className="text-gray-500 text-xs mt-1">{stat.label}</div>
+            </motion.div>
           ))}
         </motion.div>
 
-        {/* Abstract visual composition */}
+        {/* Abstract visual composition with floating pills & continuous ambient float */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.4 }}
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, delay: 0.8, ease: EASE_PREMIUM }}
           className="mt-16 relative max-w-3xl mx-auto"
         >
-          <div className="bg-[#111111] border border-[#2A2A2A] rounded-xl p-6 text-left shadow-2xl">
+          {/* Left floating badge */}
+          <motion.div
+            animate={{
+              y: [-6, 6, -6],
+            }}
+            transition={{
+              duration: 5,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            className="hidden sm:flex absolute -top-5 -left-6 z-20 items-center gap-2 bg-[#121212]/90 backdrop-blur-md border border-[#F5B700]/30 px-3.5 py-2 rounded-xl shadow-xl"
+          >
+            <Sparkles size={14} className="text-[#F5B700]" />
+            <span className="text-xs font-semibold text-white tracking-wide">360° Marketing System</span>
+          </motion.div>
+
+          {/* Right floating badge */}
+          <motion.div
+            animate={{
+              y: [6, -6, 6],
+            }}
+            transition={{
+              duration: 6,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            className="hidden sm:flex absolute -bottom-5 -right-6 z-20 items-center gap-2 bg-[#121212]/90 backdrop-blur-md border border-emerald-500/30 px-3.5 py-2 rounded-xl shadow-xl"
+          >
+            <TrendingUp size={14} className="text-emerald-400" />
+            <span className="text-xs font-semibold text-white tracking-wide">Verified Client Outcomes</span>
+          </motion.div>
+
+          {/* Main Dashboard Card with subtle ambient float */}
+          <motion.div
+            animate={{
+              y: [0, -5, 0],
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            className="bg-[#111111]/95 backdrop-blur-sm border border-[#2A2A2A] hover:border-[#F5B700]/40 rounded-xl p-6 text-left shadow-2xl transition-all duration-300"
+          >
             <div className="flex items-center gap-2 mb-4">
               <div className="w-3 h-3 rounded-full bg-red-500/70" />
               <div className="w-3 h-3 rounded-full bg-yellow-500/70" />
@@ -133,7 +252,7 @@ export default function HeroSection() {
                 { label: "Campaigns", status: "Running", color: "text-green-400" },
                 { label: "Leads", status: "Flowing", color: "text-blue-400" },
               ].map((item) => (
-                <div key={item.label} className="bg-[#1A1A1A] rounded-lg p-3 border border-[#2A2A2A]">
+                <div key={item.label} className="bg-[#1A1A1A] rounded-lg p-3 border border-[#2A2A2A] hover:border-[#F5B700]/30 transition-colors">
                   <div className="text-gray-500 text-xs">{item.label}</div>
                   <div className={`${item.color} font-semibold text-sm mt-1`}>{item.status}</div>
                 </div>
@@ -197,15 +316,17 @@ export default function HeroSection() {
                 </div>
               ))}
             </div>
-          </div>
+          </motion.div>
         </motion.div>
       </div>
 
-      {/* Scroll indicator */}
+      {/* Scroll indicator with smooth bounce */}
       <motion.div
-        animate={{ y: [0, 10, 0] }}
-        transition={{ repeat: Infinity, duration: 2 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-gray-600"
+        animate={{ y: [0, 8, 0] }}
+        transition={{ repeat: Infinity, duration: 2.2, ease: "easeInOut" }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-gray-500 hover:text-[#F5B700] transition-colors cursor-pointer"
+        onClick={() => window.scrollTo({ top: window.innerHeight * 0.85, behavior: "smooth" })}
+        aria-label="Scroll down"
       >
         <ChevronDown size={24} />
       </motion.div>

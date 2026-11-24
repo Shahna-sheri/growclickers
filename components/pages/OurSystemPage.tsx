@@ -2,7 +2,8 @@
 
 import { motion } from "framer-motion";
 import { createWhatsAppUrl } from "@/lib/whatsapp";
-import { MessageCircle, CheckCircle2 } from "lucide-react";
+import { MessageCircle, CheckCircle2, Sparkles } from "lucide-react";
+import { EASE_PREMIUM } from "@/lib/animations";
 
 const steps = [
   {
@@ -94,16 +95,49 @@ export default function OurSystemPage() {
     <div className="bg-[#050505] min-h-screen pt-24">
       {/* Hero */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 text-center">
-        <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-          <span className="section-label">Our Methodology</span>
-          <h1 className="section-heading mt-3 mb-5 max-w-3xl mx-auto">
-            The GrowClickers{" "}
-            <span className="text-[#F5B700]">Business Growth System</span>
+        <div>
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: EASE_PREMIUM }}
+            className="inline-flex items-center gap-1.5 mb-3"
+          >
+            <Sparkles size={13} className="text-[#F5B700]" />
+            <span className="section-label mb-0">Our Methodology</span>
+          </motion.div>
+
+          <h1 className="section-heading mt-2 mb-5 max-w-3xl mx-auto">
+            <span className="block overflow-hidden py-1">
+              <motion.span
+                initial={{ y: "110%", opacity: 0 }}
+                animate={{ y: "0%", opacity: 1 }}
+                transition={{ duration: 0.7, delay: 0.1, ease: EASE_PREMIUM }}
+                className="inline-block"
+              >
+                The GrowClickers{" "}
+              </motion.span>
+            </span>
+            <span className="block overflow-hidden py-1">
+              <motion.span
+                initial={{ y: "110%", opacity: 0 }}
+                animate={{ y: "0%", opacity: 1 }}
+                transition={{ duration: 0.7, delay: 0.22, ease: EASE_PREMIUM }}
+                className="inline-block text-[#F5B700]"
+              >
+                Business Growth System
+              </motion.span>
+            </span>
           </h1>
-          <p className="section-subheading max-w-2xl mx-auto">
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.65, delay: 0.35, ease: EASE_PREMIUM }}
+            className="section-subheading max-w-2xl mx-auto"
+          >
             A structured, strategic approach to business growth that goes beyond running ads — building systems, brands, and marketing infrastructure that deliver sustainable results.
-          </p>
-        </motion.div>
+          </motion.p>
+        </div>
       </div>
 
       {/* Timeline Steps */}
@@ -119,17 +153,18 @@ export default function OurSystemPage() {
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.6, delay: i * 0.05 }}
+                transition={{ duration: 0.6, delay: i * 0.08, ease: EASE_PREMIUM }}
+                whileHover={{ y: -4, transition: { duration: 0.25 } }}
                 className="relative md:pl-24"
               >
                 {/* Step number circle */}
-                <div className="hidden md:flex absolute left-0 top-0 w-16 h-16 rounded-full bg-[#111] border-2 border-[#F5B700] items-center justify-center">
+                <div className="hidden md:flex absolute left-0 top-0 w-16 h-16 rounded-full bg-[#111] border-2 border-[#F5B700] items-center justify-center shadow-[0_0_15px_rgba(245,183,0,0.25)]">
                   <div className="text-center">
                     <div className="text-[#F5B700] text-[10px] font-bold leading-none">{step.num}</div>
                   </div>
                 </div>
 
-                <div className="card-dark p-6 md:p-8 hover:border-[#F5B700]/30 transition-colors">
+                <div className="card-dark p-6 md:p-8 hover:border-[#F5B700]/50 transition-all duration-300">
                   <div className="flex items-center gap-3 mb-4">
                     <span className="md:hidden text-[#F5B700] text-xs font-bold bg-[#F5B700]/10 px-2 py-1 rounded">{step.num}</span>
                     <h2 className="text-white text-xl font-bold">{step.title}</h2>
@@ -154,8 +189,8 @@ export default function OurSystemPage() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mt-16 bg-[#111] border border-[#2A2A2A] rounded-xl p-10"
+          transition={{ duration: 0.6, ease: EASE_PREMIUM }}
+          className="text-center mt-16 bg-[#111] border border-[#2A2A2A] hover:border-[#F5B700]/40 rounded-xl p-10 shadow-2xl transition-all duration-300"
         >
           <h3 className="text-white text-2xl font-bold mb-3">
             Apply for a Growth Strategy Discussion
@@ -163,15 +198,17 @@ export default function OurSystemPage() {
           <p className="text-gray-400 mb-7 max-w-lg mx-auto">
             Interested in working with GrowClickers? Let&apos;s start with a conversation about your business goals.
           </p>
-          <a
+          <motion.a
+            whileHover={{ scale: 1.04, y: -2 }}
+            whileTap={{ scale: 0.97 }}
             href={enquiryUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-primary text-base px-8 py-4"
+            className="btn-primary btn-shimmer text-base px-8 py-4 inline-flex items-center gap-2 group"
           >
-            <MessageCircle size={20} />
+            <MessageCircle size={20} className="transition-transform group-hover:rotate-12 duration-200" />
             Apply via WhatsApp
-          </a>
+          </motion.a>
         </motion.div>
       </div>
     </div>
