@@ -788,7 +788,7 @@ export default function ResultsPage() {
           </p>
           <a
             href={createWhatsAppUrl(
-              "Hi GrowClickers, I reviewed your verified client case studies (VIPIN KK & CO, Saife Valappra, COCS, PREP D, SIZORE, Savari Cycles, GIFTED, KOKKADANS, Momo Chat, Pecific Appliances, Z1fito, Noushi's Naturals, RADGIVER, and RAYYAN) and want to discuss building a high-performing growth system for my brand."
+              "Hi GrowClickers, I reviewed your verified client case studies (VIPIN KK & CO, Saife Valappra, COCS, PREP D, SIZORE, Savari Cycles, GIFTED, KOKKADANS, Momo Chat, Pecific Appliances, Z1 FIT | Women's Fitness, Noushi's Naturals, RADGIVER, and RAYYAN) and want to discuss building a high-performing growth system for my brand."
             )}
             target="_blank"
             rel="noopener noreferrer"

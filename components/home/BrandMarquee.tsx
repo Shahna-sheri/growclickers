@@ -11,7 +11,7 @@ const brands = [
   { name: "Rayyan", logo: "/images/rayyan-logo.jpg" },
   { name: "Noushi's Naturals", logo: "/images/noushis-naturals-logo.jpg" },
   { name: "Pecific", logo: "/images/pecific-appliances-logo.jpg" },
-  { name: "Z1fito", logo: "/images/z-dance-fitness-logo.jpg" },
+  { name: "Z1 FIT | Women's Fitness", logo: "/images/z-dance-fitness-logo.jpg" },
   { name: "Prep D", logo: "/images/prep-d-logo.jpg" },
   { name: "Savari Cycles", logo: "/images/savari-cycles-logo.jpg" },
   { name: "Sizore", logo: "/images/sizore-logo.jpg" },
